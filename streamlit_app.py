@@ -125,7 +125,7 @@ if show_data_pts:
         name = "Observed Data"
     ))
 
-if show_underlying:
+if show_underlying and y_axis_select == "Strike Price":
     underlying_price = filtered.iloc[0]["UNDERLYING_LAST"]
     planeX_vals = [X.min(), X.max()]
     planeZ_vals = [Z.min(), Z.max()]
