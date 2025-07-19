@@ -1,1 +1,8 @@
 streamlit
+pandas
+py_vollib
+numpy
+matplotlib
+scikit-learn
+plotly
+scipy
