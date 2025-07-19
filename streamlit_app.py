@@ -1,5 +1,9 @@
 import streamlit as st
 import datetime
+import pandas as pd
+
+url = "https://drive.google.com/uc?export=download&id=10TOLs-kNUbVjiESm6SuYHNEXX2J-3lla"
+df = pd.read_csv(url)
 
 st.title("Volatility Tool")
 
@@ -26,3 +30,5 @@ input_date = st.sidebar.date_input(
     min_value=datetime.date(2021, 1, 4),
     max_value=datetime.date(2023, 3, 31)
 )
+
+st.write(df.head())
