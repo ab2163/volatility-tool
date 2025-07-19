@@ -39,7 +39,7 @@ risk_free_rate = st.sidebar.number_input(
     value = 0.025,
     format = "%.4f",
     min_value = 0.005,
-    max_value = 0.10
+    max_value = 0.15
 )
 
 y_axis_select = st.sidebar.selectbox(
@@ -63,6 +63,11 @@ df["QUOTE_DATE"] = df["QUOTE_DATE"].dt.date
 df["EXPIRE_DATE"] = df["EXPIRE_DATE"].dt.date
 df["T_EXP"] = (df["EXPIRE_DATE"] - df["QUOTE_DATE"]).apply(lambda x: x.days / 365)
 df = df[df["T_EXP"] > 0]
+
+if input_date.weekday() == 5:
+    input_date = input_date - datetime.timedelta(days = 1)
+elif input_date.weekday() == 6:
+    input_date = input_date - datetime.timedelta(days = 2)
 
 filtered = df[df["QUOTE_DATE"] == input_date].copy()
 filtered = filtered[filtered["C_LAST"] > 0]
